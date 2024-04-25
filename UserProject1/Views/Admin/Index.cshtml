@@ -1,0 +1,121 @@
+﻿@model IEnumerable<UserProject1.Models.UserDetails>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    /* Table styling */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #007bff; /* Vibrant blue border */
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #007bff; /* Vibrant blue background */
+            color: #fff; /* White text color */
+            border-bottom: 2px solid #fff; /* White border bottom */
+        }
+
+            .table th.mobile,
+            .table th.email,
+            .table th.profile,
+            .table th.admin,
+            .table th.active {
+                border-bottom: 2px solid #ddd; /* Light gray border bottom */
+            }
+
+        .table img {
+            max-width: 80px;
+            max-height: 80px;
+           border-block-color: #007bff; /* Vibrant blue border */
+          
+        }
+
+        .table th:last-child,
+        .table td:last-child {
+            text-align: center;
+        }
+
+        .table th:first-child,
+        .table td:first-child {
+            text-align: center;
+        }
+
+        .table td {
+            vertical-align: middle;
+
+
+        }
+</style>
+
+<h2>Registered User Details</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Profile_Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MobileNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (!string.IsNullOrEmpty(item.Profile_Image))
+                {
+                    <img src="data:image;base64,@item.Profile_Image" alt="Profile Photo" style="max-width: 80px; max-height: 80px;" class="rounded-circle" />
+                }
+                else
+                {
+                    <span>No image available</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MobileNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.IsAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("Activate", "Activate", new { id = item.UserId }) |
+                @Html.ActionLink("DeActivate", "DeActivate", new { id = item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,127 @@
+﻿@model UserProject1.Models.UserDetails
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    /* Table styling */
+    .table {
+        width: 60%; /* Reduced table width */
+        margin: auto; /* Center the table */
+        border-collapse:revert-layer; /* Collapse border */
+    }
+
+        .table th,
+        .table td {
+            padding: 8px;
+            border-bottom: 1px solid #887373; /* Add border bottom */
+        }
+
+        .table th {
+            background-color: thistle; /* Vibrant blue background for table header */
+            color:black; /* White text color */
+            text-align: left;
+        }
+
+        .table td {
+           background-color: #f2f2f2; /* Light gray background for table data */
+            text-align: left;
+        }
+
+    /* Style for profile photo */
+    .profile-photo {
+        max-width: 60px; /* Reduced maximum width */
+        max-height: 60px; /* Reduced maximum height */
+        border-radius: 50%; /* Make it circular */
+        border: 2px solid #007bff; /* Vibrant blue border */
+    }
+
+    /* Style for action links */
+    .action-links {
+        margin-top: 20px; /* Add margin at the top */
+    }
+
+        .action-links a {
+            margin-right: 10px; /* Add margin between action links */
+            text-decoration: none; /* Remove underline */
+            color: #007bff; /* Blue color for links */
+        }
+</style>
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Profile Image
+        </th>
+        <td>
+            <img src="@Url.Content(Model.Profile_Image)" alt="Profile Photo" style="max-width: 80px; max-height: 80px;" class="rounded-circle" />
+
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Mobile Number
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.MobileNumber)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            User Name
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Email
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Password
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Password)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Confirm Password
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Confirm_Password)
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            Is Admin
+        </th>
+        <td>
+
+            @Html.DisplayFor(model => model.IsAdmin)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Is Active
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.IsActive)
+        </td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.UserId }) |
+    @Html.ActionLink("Logout", "Index") 
+   
+</p>

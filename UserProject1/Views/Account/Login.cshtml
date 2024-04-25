@@ -1,0 +1,117 @@
+﻿@model UserProject1.Models.UserDetails
+
+@{
+    ViewBag.Title = "Login";
+}
+<style>
+    /* Form styling */
+    .form-horizontal {
+        max-width: 400px; /* Set maximum width */
+        margin: auto; /* Center the form horizontally */
+    }
+
+        .form-horizontal h2 {
+            text-align: center; /* Center heading */
+            color: #007bff; /* Vibrant blue text color */
+        }
+
+        .form-horizontal .form-group {
+            margin-bottom: 20px; /* Add margin between form groups */
+        }
+
+        .form-horizontal label {
+            font-weight: bold; /* Bold label text */
+            color: #6c757d; /* Dark gray label text color */
+        }
+
+        .form-horizontal input[type="text"],
+        .form-horizontal input[type="password"] {
+            width: 100%; /* Full width input fields */
+            padding: 10px; /* Add padding */
+            border: 1px solid #ced4da; /* Add border */
+            border-radius: 5px; /* Add border radius */
+        }
+
+        .form-horizontal input[type="submit"] {
+            width: 100%; /* Full width submit button */
+            padding: 10px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add border radius */
+            background-color: #007bff; /* Vibrant blue background */
+            color: #fff; /* White text color */
+            cursor: pointer; /* Add pointer cursor */
+        }
+
+            .form-horizontal input[type="submit"]:hover {
+                background-color: #0056b3; /* Darker blue background on hover */
+            }
+
+        .form-horizontal .text-danger {
+            color: #dc3545; /* Red text color for validation messages */
+        }
+
+    .login-links {
+        text-align: right; /* Right align the links */
+        margin-top: 20px;
+    }
+
+    .vertical-align {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Login</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MobileNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div class="text-lg-center">
+    @Html.ActionLink("Login Using Email", "EmailLogin")
+    <br />
+    
+    @Html.ActionLink("New User? Register Now ", "Register")
+
+
+</div>
+
+
+    
+
